@@ -1,21 +1,41 @@
+// code.js
+
 function quicksort(array) {
-    if (array.length <= 1) {
-        return array;
-    }
+    const stack = [];
+    stack.push({ left: 0, right: array.length - 1 });
 
-    const pivot = array[Math.floor(array.length / 2)];
-    const left = [];
-    const right = [];
+    while (stack.length > 0) {
+        const { left, right } = stack.pop();
 
-    for (const element of array) {
-        if (element < pivot) {
-            left.push(element);
-        } else if (element > pivot) {
-            right.push(element);
+        if (left < right) {
+            const pivotIndex = partition(array, left, right);
+            
+            if (pivotIndex - 1 > left) {
+                stack.push({ left, right: pivotIndex - 1 });
+            }
+
+            if (pivotIndex + 1 < right) {
+                stack.push({ left: pivotIndex + 1, right });
+            }
         }
     }
 
-    return quicksort(left).concat(pivot, quicksort(right));
+    return array;
+}
+
+function partition(array, low, high) {
+    const pivot = array[high];
+    let i = low - 1;
+
+    for (let j = low; j < high; j++) {
+        if (array[j] <= pivot) {
+            i++;
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+
+    [array[i + 1], array[high]] = [array[high], array[i + 1]];
+    return i + 1;
 }
 
 module.exports = { quicksort };
