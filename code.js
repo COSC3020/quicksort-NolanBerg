@@ -1,5 +1,3 @@
-// code.js
-
 function quicksort(array) {
     const stack = [];
     stack.push({ left: 0, right: array.length - 1 });
