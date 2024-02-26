@@ -63,4 +63,4 @@ Analyse the time complexity of your implementation and give a $\Theta$ bound for
 its worst-case runtime. Add your answer, including your reasoning, to this
 markdown file.
 
-O(N2). This occurs when a poorly positioned pivot is chosen constantly, leading to unbalanced partitions. In the worst-case scenario, each recursive call only reduces the size of the unsorted portion of the array by one element.
+O(N^2). This occurs when a poorly positioned pivot is chosen constantly, leading to unbalanced partitions. In the worst-case scenario, each recursive call only reduces the size of the unsorted portion of the array by one element.
