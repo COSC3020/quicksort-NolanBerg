@@ -36,4 +36,4 @@ function partition(array, low, high) {
     return i + 1;
 }
 
-module.exports = { quicksort };
+module.exports = { quicksort, partition };
